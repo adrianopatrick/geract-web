@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+     
+    <ui:define name="conteudo">
+		<h:form id="formAlunos">
+			<p:panel id="panelInserir" header="#{language.painel_header_aluno_inserir}" footer="#{language.painel_footer}" rendered="#{!alunoManager.atualizar}">
+			<center>					
+				<h:panelGrid columns="3">
+					<h:outputLabel value="#{language.aluno_nome}" for="nome" />
+					<h:inputText id="nome" value="#{alunoManager.aluno.nome}" required="true" requiredMessage="Obrigatório"/> 
+					<p:message for="nome"/>
+					
+					<h:outputLabel value="#{language.aluno_matricula}" for="matricula" />
+					<h:inputText id="matricula" value="#{alunoManager.aluno.matricula}" required="true" requiredMessage="Obrigatório"/>
+					<p:message for="matricula"/> 
+				</h:panelGrid>
+				<br/>
+				<p:commandButton value="#{language.actions_buttons_inserir}" action="#{alunoManager.inserir()}" ajax="false"/>
+				<p:commandButton value="#{language.actions_buttons_cancelar}" action="#{alunoManager.preparePesquisar()}" ajax="false" />
+			</center>
+			</p:panel>
+			<p:panel id="panelAtualizar" header="#{language.painel_header_aluno_atualizar}" footer="#{language.painel_footer}" rendered="#{alunoManager.atualizar}">
+			<center>					
+				<h:panelGrid columns="3">
+					<h:outputLabel value="#{language.aluno_nome}" for="nomeAtualizar" />
+					<h:inputText id="nomeAtualizar" value="#{alunoManager.aluno.nome}" required="true" requiredMessage="Obrigatório"/> 
+					<p:message for="nomeAtualizar"/>
+					
+					<h:outputLabel value="#{language.aluno_matricula}" for="matriculaAtualizar" />
+					<h:inputText id="matriculaAtualizar" value="#{alunoManager.aluno.matricula}" required="true" requiredMessage="Obrigatório"/>
+					<p:message for="matriculaAtualizar"/> 
+				</h:panelGrid>
+				<br/>
+				<p:commandButton value="#{language.actions_buttons_atualizar}" action="#{alunoManager.atualizar()}" ajax="false"  />
+				<p:commandButton value="#{language.actions_buttons_cancelar}" action="#{alunoManager.preparePesquisar()}" ajax="false"/>
+			</center>
+			</p:panel>
+		</h:form>
+	</ui:define>
+     
+</ui:composition>

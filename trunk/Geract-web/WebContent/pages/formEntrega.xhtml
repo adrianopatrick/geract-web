@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+     
+    <ui:define name="conteudo">
+		<h:form id="formEntrega">
+			<p:panel id="panelInserir" header="#{language.painel_header_entrega_inserir}" footer="#{language.painel_footer}" rendered="#{!entregaManager.atualizar}">
+			<center>					
+				<h:panelGrid columns="3">
+					<h:outputLabel value="#{language.entrega_descricao}" for="descricao" />
+					<h:inputText id="descricao" value="#{entregaManager.entrega.descricao}" required="true" requiredMessage="Obrigatório"/> 
+					<h:message for="descricao"/>
+					
+					<h:outputLabel value="#{language.entrega_data_marcada}" for="dataMarcada" />
+					<p:calendar value="#{entregaManager.entrega.dataMarcada}" id="dataMarcada" locale="pt" pattern="dd/MM/yyyy"
+						mindate="07/01/12" maxdate="12/31/12" />
+					<h:message for="dataMarcada"/>
+									
+				</h:panelGrid>
+				<br/>
+				<p:commandButton value="#{language.actions_buttons_inserir}" action="#{entregaManager.inserir()}" ajax="false" />
+				<p:commandButton value="#{language.actions_buttons_cancelar}" action="#{entregaManager.preparaPesquisar()}" ajax="false" />
+			</center>
+			</p:panel>
+			<p:panel id="panelAtualizar" header="#{language.painel_header_entrega_atualizar}" footer="#{language.painel_footer}" rendered="#{entregaManager.atualizar}">
+			<center>					
+				<h:panelGrid columns="3">
+				
+					<h:outputLabel value="#{language.entrega_descricao}" for="descricaoAlteracao" />
+					<h:inputText id="descricaoAlteracao" value="#{entregaManager.entrega.descricao}" required="true" requiredMessage="Obrigatório"/> 
+					<h:message for="descricaoAlteracao"/>
+					
+					<h:outputLabel value="#{language.entrega_data_marcada}" for="dataMarcadaAlteracao" />
+					<p:calendar value="#{entregaManager.entrega.dataMarcada}" id="dataMarcadaAlteracao" locale="pt" pattern="dd/MM/yyyy"
+						mindate="07/01/12" maxdate="12/31/12" required="true" requiredMessage="Obrigatório"/>
+					<h:message for="dataMarcadaAlteracao"/>
+									
+				</h:panelGrid>
+				<br/>
+				<p:commandButton value="#{language.actions_buttons_atualizar}" action="#{entregaManager.atualizar()}" ajax="false" />
+				<p:commandButton value="#{language.actions_buttons_cancelar}" action="#{entregaManager.preparaPesquisar()}" ajax="false" />
+			</center>
+			</p:panel>
+		</h:form>
+	</ui:define>
+     
+</ui:composition>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+     
+    <ui:define name="conteudo">
+		<h:form id="formEquipe">
+			<p:panel id="panelInserir" header="#{language.painel_header_equipe_inserir}" footer="#{language.painel_footer}" rendered="#{!equipeManager.atualizar}">
+			<center>					
+				<h:panelGrid columns="3">
+					<h:outputLabel value="#{language.equipe_nome}" for="nomeInserir" />
+					<h:inputText id="nomeInserir" value="#{equipeManager.equipe.nome}" required="true" requiredMessage="Obrigatório"/> 
+					<h:message for="nomeInserir"/>
+									
+				</h:panelGrid>
+				<br/>
+				<p:commandButton value="#{language.actions_buttons_inserir}" action="#{equipeManager.inserir()}" ajax="false" />
+				<p:commandButton value="#{language.actions_buttons_cancelar}" action="#{equipeManager.preparaPesquisar()}" ajax="false" />
+			</center>
+			</p:panel>
+			<p:panel id="panelAtualizar" header="#{language.painel_header_equipe_atualizar}" footer="#{language.painel_footer}" rendered="#{equipeManager.atualizar}">
+			<center>					
+				<h:panelGrid columns="3">
+					<h:outputLabel value="#{language.equipe_nome}" for="nomeAtualizar" />
+					<h:inputText id="nomeAtualizar" value="#{equipeManager.equipe.nome}" required="true" requiredMessage="Obrigatório"/> 
+					<h:message for="nomeAtualizar"/>
+									
+				</h:panelGrid>
+				<br/>
+				<p:commandButton value="#{language.actions_buttons_atualizar}" action="#{equipeManager.atualizar()}" ajax="false" />
+				<p:commandButton value="#{language.actions_buttons_cancelar}" action="#{equipeManager.preparaPesquisar()}" ajax="false" />
+			</center>
+			</p:panel>
+		</h:form>
+	</ui:define>
+     
+</ui:composition>

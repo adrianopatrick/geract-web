@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui" 
+     template="/templates/templatePadrao.xhtml">
+     
+     <ui:define name="conteudo">
+     	<h:form id="manterEquipeForm">
+     		
+     		<p:panel id="panel" header="#{language.equipe_nome} #{equipeManager.equipe.nome}" footer="#{language.painel_footer}">
+     		
+	     		<center>
+	     		
+	     			<p:pickList value="#{equipeManager.membros}"  
+               					var="membro"  iconOnly="true"
+                				itemLabel="#{membro.nome}"  
+                				itemValue="#{membro}" 
+                				converter="alunoConverter"
+                				showSourceControls="true" showTargetControls="true" >
+                				
+                		<f:facet name="sourceCaption">Alunos Disponíveis</f:facet>  
+				        <f:facet name="targetCaption">Membros</f:facet> 
+            		</p:pickList>
+                	<br/>			
+                	<p:commandButton value="Salvar" action="#{equipeManager.salvarMembros()}" ajax="false"/>
+                	<p:commandButton value="Cancelar" action="#{equipeManager.preparaPesquisar()}" ajax="false"/>	
+	     			
+	     		</center>
+     		
+     		</p:panel>
+     		
+     	</h:form>
+     </ui:define>
+     
+</ui:composition>

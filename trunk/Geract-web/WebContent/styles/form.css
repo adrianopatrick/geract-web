@@ -1,0 +1,8 @@
+.panel { text-align: center;}
+.button {background-color: #FFFFFF; color: #000000; border: 1px outset;}
+.topo { 
+	background-image: url(/Geract-web/images/topo.jpg);
+	background-position: top;
+	height: 55px;
+	width: 100%
+}
