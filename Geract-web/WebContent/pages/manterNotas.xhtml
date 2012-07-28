@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+
+	<ui:define name="conteudo">
+		<h:form id="formManterNotas">	
+			
+			<p:panel id="panel" header="Distribuir Notas" footer="#{language.painel_footer}">
+				<center id="centro">
+					<br/>
+					<h:panelGrid id="panelGrid" columns="3">
+						<h:outputLabel value="Equipe: "  for="idEquipe"/>
+						<h:selectOneMenu id="idEquipe" value="#{manterNotas.equipeSelecionada.id}" >
+						    <f:selectItem itemLabel="-- Selecione uma Equipe -- " itemValue="0"/> 
+							<f:selectItems value="#{manterNotas.listEquipes}" var="e" 
+								itemValue="#{e.id}" itemLabel="#{e.nome}" />
+							<f:ajax event="change" listener="#{manterNotas.listaEntregasPorEquipe}" render="panelGrid" />
+						</h:selectOneMenu>
+						<p:message for="idEquipe" />
+						
+						<h:outputLabel value="Entrega: "  for="idEntrega" rendered="#{manterNotas.equipeSelecionada.id != null and not empty manterNotas.listEntregas}"/>
+						<h:selectOneMenu id="idEntrega" value="#{manterNotas.entregaSelecionada.id}" rendered="#{manterNotas.equipeSelecionada.id != null and not empty manterNotas.listEntregas}">
+						    <f:selectItem itemLabel="-- Selecione uma Entrega -- " itemValue="0"/> 
+							<f:selectItems value="#{manterNotas.listEntregas}" var="e" 
+								itemValue="#{e.id}" itemLabel="#{e.descricao}" />
+							<f:ajax event="change" listener="#{manterNotas.listaNotasPorEquipeEntrega}" render="@all"/>
+						</h:selectOneMenu>
+						<p:message for="idEntrega" />
+		
+					</h:panelGrid>
+					<br/>
+					<p:dataTable id="notas" var="nota" value="#{manterNotas.listNotas}" rendered="#{not empty manterNotas.listNotas}" style="max-width:50%; min-width:50%;">
+					
+						<p:column style="text-align: center;" >  
+			            	<f:facet name="header">  
+			                	<h:outputText value="Aluno" />  
+			            	</f:facet>  
+			            	<h:outputText value="#{nota.aluno.nome}" />  
+			        	</p:column>
+			        	
+			        	<p:column style="text-align: center;" >  
+			            	<f:facet name="header">  
+			                	<h:outputText value="Nota" />  
+			            	</f:facet>  
+			            	<h:inputText value="#{nota.nota}" maxlength="5" size="5" style="text-align:center"/>
+			        	</p:column>
+			        	
+			        	<f:facet name="footer">
+			        		<h:outputText value="Pontos da Entrega: #{manterNotas.entregaSelecionada.nota * manterNotas.listNotas.size()}" />
+			        	</f:facet>
+					</p:dataTable>
+					<br/>
+					<p:commandButton action="#{manterNotas.atualizarNotas()}" value="#{language.actions_buttons_atualizar}" styleClass="button" ajax="false"/>
+				</center>
+			</p:panel>
+		</h:form>
+	</ui:define>
+	      
+</ui:composition>

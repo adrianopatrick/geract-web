@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#pages#home.xhtml" NAME="output"
+    PATH="/pages/home.xhtml" TARGET="rules:#pages#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listAlunos::#pages#listAlunos.xhtml"
+    NAME="output1" PATH="/pages/listAlunos.xhtml"
+    TARGET="rules:#pages#listAlunos.xhtml" TITLE="listAlunos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="formAluno::#pages#formAluno.xhtml"
+    NAME="output2" PATH="/pages/formAluno.xhtml"
+    TARGET="rules:#pages#formAluno.xhtml" TITLE="formAluno" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listEquipes::#pages#listEquipes.xhtml"
+    NAME="output3" PATH="/pages/listEquipes.xhtml"
+    TARGET="rules:#pages#listEquipes.xhtml" TITLE="listEquipes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="formEquipe::#pages#formEquipe.xhtml"
+    NAME="output4" PATH="/pages/formEquipe.xhtml"
+    TARGET="rules:#pages#formEquipe.xhtml" TITLE="formEquipe" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="tableEquipe::#pages#tableEquipes.xhtml"
+    NAME="output5" PATH="/pages/tableEquipes.xhtml"
+    TARGET="rules:#pages#tableEquipes.xhtml" TITLE="tableEquipe" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listEntrega::#pages#listEntrega.xhtml"
+    NAME="output6" PATH="/pages/listEntrega.xhtml"
+    TARGET="rules:#pages#listEntrega.xhtml" TITLE="listEntrega" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listAtividade::#pages#listAtividade.xhtml"
+    NAME="output7" PATH="/pages/listAtividade.xhtml"
+    TARGET="rules:#pages#listAtividade.xhtml" TITLE="listAtividade" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="formAtividade::#pages#formAtividade.xhtml"
+    NAME="output8" PATH="/pages/formAtividade.xhtml"
+    TARGET="rules:#pages#formAtividade.xhtml" TITLE="formAtividade" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="manterNotas::#pages#manterNotas.xhtml"
+    NAME="output9" PATH="/pages/manterNotas.xhtml"
+    TARGET="rules:#pages#manterNotas.xhtml" TITLE="manterNotas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#home.xhtml" PATH="/pages/home.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listAlunos.xhtml"
+  PATH="/pages/listAlunos.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#formAluno.xhtml"
+  PATH="/pages/formAluno.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listEquipes.xhtml"
+  PATH="/pages/listEquipes.xhtml" SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#formEquipe.xhtml"
+  PATH="/pages/formEquipe.xhtml" SHAPE="304,609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#tableEquipes.xhtml"
+  PATH="/pages/tableEquipes.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listEntrega.xhtml"
+  PATH="/pages/listEntrega.xhtml" SHAPE="304,561,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listAtividade.xhtml"
+  PATH="/pages/listAtividade.xhtml" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#formAtividade.xhtml"
+  PATH="/pages/formAtividade.xhtml" SHAPE="304,625,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#manterNotas.xhtml"
+  PATH="/pages/manterNotas.xhtml" SHAPE="304,657,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

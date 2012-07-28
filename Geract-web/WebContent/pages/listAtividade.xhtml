@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="formListAtividade">	
+			
+			<p:panel id="panel" header="Entrega: #{atividadeManager.entrega.descricao} - #{language.painel_header_atividade_consultar}" footer="#{language.painel_footer}">
+			<center id="center">					
+				<br/>				
+				<p:dataTable id="dataTable" var="atividade" value="#{atividadeManager.atividades}"  paginator="true" rows="5" 
+	                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" emptyMessage="#{language.lista_vazia}">  
+			  
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Atividade" />  
+			            </f:facet>  
+			            <h:outputText value="#{atividade.descricao}" />  
+			        </p:column>
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Status" />  
+			            </f:facet>  
+			            <h:outputText value="#{atividade.status.descricao}" />  
+			        </p:column>
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Tipo Atividade" />  
+			            </f:facet>  
+			            <h:outputText value="#{atividade.tipo.descricao}" />  
+			        </p:column>
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Pontuação" />  
+			            </f:facet>  
+			            <h:outputText value="#{atividade.pontuacao}" />  
+			        </p:column>				
+			       	  
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Atualizar" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/editar.png" title="Atualizar" action="#{atividadeManager.preparaAtualizar()}" ajax="false" 
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;">  
+                            <f:setPropertyActionListener value="#{atividade}"  
+                                target="#{atividadeManager.atividade}"/>  
+                        </h:commandButton>   
+			        </p:column>
+			        
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Excluir" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/excluir.png" title="Excluir" ajax="false" 
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;" 
+			            	onclick="if (!confirm('Deseja realmente excluir este registro?')) return false" action="#{atividadeManager.excluir()}">  
+                            <f:setPropertyActionListener value="#{atividade}"  
+                                target="#{atividadeManager.atividade}"/>  
+                        </h:commandButton>   
+			        </p:column>
+			         
+			    </p:dataTable>  
+			    
+			    <br/>
+			    <p:commandButton action="#{atividadeManager.preparaInserir()}" value="#{language.actions_buttons_inserir}" styleClass="button" ajax="false"/>
+			    <p:commandButton action="#{entregaManager.preparaPesquisar()}" value="#{language.actions_buttons_cancelar}" styleClass="button" ajax="false" >
+			    	<f:setPropertyActionListener target="#{entregaManager.equipe}" value="#{atividadeManager.entrega.equipe}" />
+			    </p:commandButton>
+			    
+			</center>
+									
+			</p:panel>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>	

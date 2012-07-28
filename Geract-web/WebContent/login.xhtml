@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<f:view>
+		<ui:composition template="/templates/templateLogin.xhtml">
+			<ui:define name="body">
+				<h:form class="login" id="form_login" prependId="false">
+					<h:panelGroup>
+						<h:outputLabel for="usuario" value="#{language.usuario}"/>
+						<h:inputText id="usuario" />
+						<h:outputLabel for="senha" value="#{language.senha}"/>
+						<h:inputSecret id="senha" />
+						<p:commandButton ajax="false" value="#{language.entrar}" styleClass="submit" action="home"/>
+					</h:panelGroup>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</f:view>
+</html>

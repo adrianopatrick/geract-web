@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xml:lang="pt" lang="pt-br">
+	<f:view contentType="text/html" encoding="UTF-8">
+		<h:head>
+			<title><ui:insert name="title">Geract - Gestão de Atividades</ui:insert></title>
+			<link href="#{request.contextPath}/styles/login.css" rel="stylesheet" type="text/css" />
+		</h:head>
+	
+		<h:body>
+			<br/><br/>
+			<div class='content'>
+				<h:messages styleClass="error ui-corner-all" id="message"/>
+				<div class='body border-radius'>
+					<div class='about'>
+						<!--  <div class='logo-natuur'></div>-->
+						<div class="texto">
+							<h1>#{language.wellcome}</h1>
+							<p>
+								#{language.wellcome_system}<br/>
+								#{language.wellcome_message}
+							</p>
+						</div>
+					</div>
+						
+					<ui:insert name="body" />
+								
+				</div>
+				<div class='header'>
+					<!-- <div class='logo-semace'></div>
+					<div class='logo-governo'></div>  -->
+				</div>
+			</div>
+			<script type="text/javascript">
+				$(function(){
+					var timeout = window.location.search.replace('?','');
+					if (timeout == 'timeout'){
+						$('<ul/>',{ 'class' : 'error ui-corner-all' }).appendTo('.content').html('<li>Tempo de sessão expirada. Faça login novamente.</li>');
+					}
+					var error = $('.error');
+					if (error) {
+						error.hide().slideDown('slow');
+						setTimeout(function(){ error.slideUp('slow'); }, 5000);
+					}
+					$('#usuario').focus();
+				});
+				
+			</script>
+		</h:body>
+	
+	</f:view>
+</html>

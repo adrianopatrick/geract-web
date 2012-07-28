@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+		
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/pages/home.xhtml</to-view-id> 
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listAlunos</from-outcome>
+			<to-view-id>/pages/listAlunos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>formAluno</from-outcome>
+			<to-view-id>/pages/formAluno.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listEquipes</from-outcome>
+			<to-view-id>/pages/listEquipes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>formEquipe</from-outcome>
+			<to-view-id>/pages/formEquipe.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tableEquipe</from-outcome>
+			<to-view-id>/pages/tableEquipes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listEntrega</from-outcome>
+			<to-view-id>/pages/listEntrega.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listAtividade</from-outcome>
+			<to-view-id>/pages/listAtividade.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>formAtividade</from-outcome>
+			<to-view-id>/pages/formAtividade.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>manterNotas</from-outcome>
+			<to-view-id>/pages/manterNotas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<converter>
+		<display-name>alunoConverter</display-name>
+		<converter-id>alunoConverter</converter-id>
+	 	<converter-class>com.implementsystem.geract.converts.AlunoConverter</converter-class>
+	 </converter>
+	 
+	 <converter>
+		<display-name>equipeConverter</display-name>
+		<converter-id>equipeConverter</converter-id>
+	 	<converter-class>com.implementsystem.geract.converts.EquipeConverter</converter-class>
+	 </converter>
+	 
+	 <converter>
+		<display-name>entregaConverter</display-name>
+		<converter-id>entregaConverter</converter-id>
+	 	<converter-class>com.implementsystem.geract.converts.EntregaConverter</converter-class>
+	 </converter>
+	
+	<application>
+		<resource-bundle>
+			<base-name>com.implementsystem.geract.internacionalizacao.language</base-name>
+			<var>language</var>
+		</resource-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>pt</supported-locale>
+		</locale-config>
+	</application>
+
+</faces-config>

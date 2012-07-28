@@ -1,0 +1,28 @@
+
+body { color:#333; padding-top:100px; }
+* { font-family:"Trebuchet MS",Tahoma, Arial, sans-serif; font-size:12px; }
+.clr { clear: both; }
+.content { width:660px; height:450px; display:block; margin:0 auto; }
+#j_idt8 { border: none; width:660px; height:450px; }
+
+.border-radius {-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+
+.error {position:absolute;top:-5px;width:640px;list-style:none;padding:0;background:#ffc;padding:5px 15px;color:#d11;font-size:12px;font-weight:bold;}
+
+.content .body { padding:5px; width:658px; height:170px; position:relative; border:1px solid #fff; background:#363636 left -50px  no-repeat; box-shadow:0 0 5px #999; }
+.content .about { float:left; }
+
+.content .header { height:90px; margin-top:20px; position:relative; }
+
+.content .about { width:390px; min-height:210px; padding-right:5px; position:absolute; top:10px; left:20px; }
+.content .about .texto {margin-top:70px;}
+.content .about h1 { color:#F0FFFF; font-size:18px; }
+.content .about p { color:#666; }
+.content .about p.center { text-align:center; color:#00321E; }
+.content .body .rf-p {background-color:transparent;border:0;}
+.content .body .rf-p ul {background:transparent;border:0;}
+
+.login { width:155px; height:160px; position:absolute; top:0px; right:55px; padding:10px; border-left:1px solid #fff; }
+.login input { border:2px solid #ccc; margin-bottom:5px; width:210px; display:block; font-size:22px; background:#fff; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+.login label { color:#F0FFFF; font-size:12px; }
+.login input.submit { font-size:12; }

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="formListEquipes">	
+			
+			<p:panel id="panel" header="#{language.painel_header_equipe_consultar}" footer="#{language.painel_footer}">
+			<center id="center">	
+							
+				<p:dataTable id="dataTable" var="equipe" value="#{equipeManager.equipes}"  paginator="true" rows="10"  rendered="#{not empty equipeManager.equipes}"
+	                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" >  
+	                 
+			        <f:facet name="header">  
+			            Lista de Equipes  
+			        </f:facet>  
+			  
+			        <p:column style="text-align: center;">  
+			            <f:facet name="header">  
+			                <h:outputText value="Equipe" />  
+			            </f:facet>  
+			            <h:outputText value="#{equipe.nome}" />  
+			        </p:column>		       
+			       	  
+			       <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Atualizar" />  
+			            </f:facet>   
+			            <p:commandButton image="/images/icons/editar.png" title="Atualizar" action="#{equipeManager.preparaAtualizar()}" ajax="false" 
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;">  
+                            <f:setPropertyActionListener value="#{equipe}"  
+                                target="#{equipeManager.equipe}"/>  
+                        </p:commandButton>   
+			        </p:column>
+			        
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Excluir" />  
+			            </f:facet>   
+			            <p:commandButton image="/images/icons/excluir.png" title="Excluir" ajax="false" 
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;" action="#{equipeManager.excluir(equipe.id)}">  
+                            <f:setPropertyActionListener value="#{equipe}"  
+                                target="#{equipeManager.equipe}"/>  
+                        </p:commandButton>   
+			        </p:column>
+			         
+			    </p:dataTable>  
+			    
+			</center>
+									
+			</p:panel>
+			
+		</h:form>
+		<h:form id="dlg">
+
+            <p:confirmDialog message="Deseja realmente excluir este registro?" hideEffect="explode" header="Aviso" severity="alert" widgetVar="confirmation" modal="true">
+
+                <!--caso seja sim chamo o metodo excluir, e fecho o modal com o oncomplete, tenho o process que estou dizendo para processar o form, e update para atualizar a tabela-->
+
+                <p:commandButton id="btnSim" value="Sim" oncomplete="confirmation.hide();" actionListener="#{equipeManager.excluir()}" ajax="false" />
+
+                <!--caso seja não somente fecha o modal-->
+
+                <p:commandButton id="btnNao" value="Não" onclick="confirmation.hide();" type="button"/>
+
+            </p:confirmDialog>
+
+        </h:form>
+		
+	</ui:define>
+</ui:composition>	

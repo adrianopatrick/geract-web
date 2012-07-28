@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="formListEntregas">	
+			
+			<p:panel id="panel" header="Equipe: #{entregaManager.equipe.nome} - #{language.painel_header_entrega_consultar}" footer="#{language.painel_footer}">
+			<center id="center">					
+				<br/>
+				<p:dataTable id="dataTable" var="entrega" value="#{entregaManager.entregas}"  paginator="true" rows="5" emptyMessage="#{language.lista_vazia}"
+	                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" >  
+			  
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Entrega" />  
+			            </f:facet>  
+			            <h:outputText value="#{entrega.descricao}" />  
+			        </p:column>
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Data Marcada" />  
+			            </f:facet>  
+			            <h:outputText value="#{entrega.dataMarcada}" >
+			            	<f:convertDateTime pattern="dd/MM/yyyy" /> 
+			            </h:outputText>  
+			        </p:column>
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Status da Entrega" />  
+			            </f:facet>  
+			            <h:outputText value="#{entrega.status.descricao}" />  
+			        </p:column>				
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Nota" />  
+			            </f:facet>  
+			            <h:outputText value="#{entrega.nota}" />  
+			        </p:column>
+			        
+			        <p:column style="text-align: center;" >  
+			            <f:facet name="header">  
+			                <h:outputText value="Data Realizada" />  
+			            </f:facet>  
+			            <h:outputText value="#{entrega.dataRealizada}" >
+			            	<f:convertDateTime pattern="dd/MM/yyyy" /> 
+			            </h:outputText>  
+			        </p:column>
+			        
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Manter Atividades" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/recicla.png" title="Manter Atividades" ajax="false" action="#{atividadeManager.preparaPesquisar()}"
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;">  
+                            <f:setPropertyActionListener value="#{entrega}"  
+                                target="#{atividadeManager.entrega}"/>  
+                        </h:commandButton>   
+			        </p:column>    
+			       	  
+			       <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Atualizar" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/editar.png" title="Atualizar" ajax="false" action="#{entregaManager.preparaAtualizar()}"
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;">  
+                            <f:setPropertyActionListener value="#{entrega}"  
+                                target="#{entregaManager.entrega}"/>
+                        </h:commandButton>   
+			        </p:column>
+			        
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Excluir" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/excluir.png" title="Excluir" ajax="false" action="#{entregaManager.excluir()}"
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;" 
+			            	onclick="if (!confirm('Deseja realmente excluir este registro?')) return false">  
+                            <f:setPropertyActionListener value="#{entrega}"  
+                                target="#{entregaManager.entrega}"/>
+                        </h:commandButton>   
+			        </p:column>
+			         
+			    </p:dataTable>  
+			    
+			    <br/>
+			    <p:commandButton action="#{entregaManager.preparaInserir()}" value="#{language.actions_buttons_inserir}" styleClass="button" ajax="false"/>
+			    <p:commandButton action="#{equipeManager.preparaPesquisar()}" value="#{language.actions_buttons_cancelar}" styleClass="button" ajax="false"/>
+			</center>
+									
+			</p:panel>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>	

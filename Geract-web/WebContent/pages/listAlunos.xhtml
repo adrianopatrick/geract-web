@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets" template="/templates/templatePadrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form id="formListAlunos">	
+			
+			<p:panel id="panel" header="#{language.painel_header_aluno_consultar}" footer="#{language.painel_footer}">
+			<center>					
+				<h:panelGrid columns="2">
+				
+					<h:outputLabel value="#{language.aluno_nome}" for="nome" />
+					<h:inputText id="nome" value="#{alunoManager.aluno.nome}" /> 
+					
+					<h:outputLabel value="#{language.aluno_matricula}" for="matricula" />
+					<h:inputText id="matricula" value="#{alunoManager.aluno.matricula}" /> 
+											
+				</h:panelGrid>
+				
+				<p:commandButton action="#{alunoManager.pesquisar()}" value="#{language.actions_buttons_pesquisa}" ajax="false" />
+				<p:commandButton action="home" value="#{language.actions_buttons_cancelar}" ajax="false"/>
+				<br/>
+				<f:verbatim rendered="#{not empty alunoManager.alunos}">
+					<br/><br/><br/>
+				</f:verbatim>
+				
+				<p:dataTable id="dataTable" var="aluno" value="#{alunoManager.alunos}"  paginator="true" rows="10" 
+	                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}" 
+	                 emptyMessage="#{language.lista_vazia}">  
+	                 
+			        <p:column>  
+			            <f:facet name="header">  
+			                <h:outputText value="Matricula" />  
+			            </f:facet>  
+			            <h:outputText value="#{aluno.matricula}" />  
+			        </p:column>  
+			  
+			        <p:column>  
+			            <f:facet name="header">  
+			                <h:outputText value="Nome" />  
+			            </f:facet>  
+			            <h:outputText value="#{aluno.nome}" />  
+			        </p:column>  
+			  
+			        <p:column>  
+			            <f:facet name="header">  
+			                <h:outputText value="Equipe" />  
+			            </f:facet>  
+			            <h:outputText value="#{aluno.equipe.nome}" />  
+			        </p:column>	
+			       
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Atualizar" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/editar.png" title="Atualizar" action="#{alunoManager.preparaAlterar()}" ajax="false" 
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;">  
+                            <f:setPropertyActionListener value="#{aluno}"  
+                                target="#{alunoManager.aluno}"/>  
+                        </h:commandButton>   
+			        </p:column>
+			        
+			        <p:column style="width: 12%; text-align: center;"> 
+			       		<f:facet name="header">  
+			                <h:outputText value="Excluir" />  
+			            </f:facet>   
+			            <h:commandButton image="/images/icons/excluir.png" title="Excluir" ajax="false" 
+			            	style="background-position: right 2px; padding-right:2px;height : 24px; width : 24px;" 
+			            	onclick="if (!confirm('Deseja realmente excluir este registro?')) return false" action="#{alunoManager.excluir()}">  
+                            <f:setPropertyActionListener value="#{aluno}"  
+                                target="#{alunoManager.aluno}"/>  
+                        </h:commandButton>   
+			        </p:column>
+			        
+			        <!-- <p:column>  
+			            <p:commandButton image="/imagens/icons/excluir.jpg" title="Excluir" action="#{alunoManager.excluir()}" >  
+                            <f:setPropertyActionListener value="#{aluno}"  
+                                target="#{alunoManager.aluno}"/>  
+                        </p:commandButton>   
+			        </p:column> -->		  
+			        
+			    </p:dataTable>  
+			    
+			    <h:outputText value="#{language.lista_vazia}" rendered="#{!alunoManager.retornou}"/>
+			    <br/>
+			    <p:commandButton action="#{alunoManager.preparaInserir()}" value="#{language.actions_buttons_inserir}" styleClass="button" ajax="false"/>
+			    
+			</center>
+									
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>	
